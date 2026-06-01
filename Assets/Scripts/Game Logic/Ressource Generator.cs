@@ -6,14 +6,9 @@ public class RessourceGenerator : MonoBehaviour
     
     [Header ("Generation Settings")]
     public int amountGenerated;
-    
-    public void GenerateForPlayer()
+    [SerializeField] private ResourceOwner GenerateFor;
+    public void GenerateRessources()
     {
-        ressource.playerAmount += amountGenerated;
-    }
-    
-    public void GenerateForHumans()
-    {
-        ressource.playerAmount += amountGenerated;
+        ressource.AddAmount(GenerateFor, amountGenerated);
     }
 }

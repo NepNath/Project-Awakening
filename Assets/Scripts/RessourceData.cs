@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ResourceOwner
 {
     Player,
-    Human
+    Human,
+    All
 }
 
 [CreateAssetMenu(fileName = "RessourceData", menuName = "Scriptable Objects/Ressource")]
@@ -54,6 +55,23 @@ public class ResourceData : ScriptableObject
                 return playerAmount;
             case ResourceOwner.Human:
                 return humanAmount;
+            case ResourceOwner.All:
+                return humanAmount + playerAmount;
+            default:
+                return 0;
+        }
+    }
+
+    public int AddAmount(ResourceOwner target, int amount)
+    {
+        switch (target)
+        {
+            case ResourceOwner.Player:
+                return playerAmount += amount;
+            case ResourceOwner.Human:
+                return humanAmount += amount;
+            case ResourceOwner.All:
+                return (humanAmount + playerAmount) + amount ;
             default:
                 return 0;
         }
