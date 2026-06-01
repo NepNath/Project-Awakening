@@ -71,7 +71,9 @@ public class ResourceData : ScriptableObject
             case ResourceOwner.Human:
                 return humanAmount += amount;
             case ResourceOwner.All:
-                return (humanAmount + playerAmount) + amount ;
+                AddAmount(ResourceOwner.Player, amount);
+                AddAmount(ResourceOwner.Human, amount);
+                return 0;
             default:
                 return 0;
         }
